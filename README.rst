@@ -3,7 +3,7 @@ Django Nginx Memcache
 Provides a view decorator. Use it to cache content in Memcache for nginx to
 retrieve.
 
-The cache keys are hashed using an md5 of the the request path *without*
+The cache keys are hashed using an md5 of the the request path *witho̶u̶t̶*
 GET parameters,
 
 Installation
@@ -39,7 +39,7 @@ Installation
         if ($http_cookie ~* "pv=([^;]+)(?:;|$)") {
           set $page_version $1;
         }
-        set_md5 $hash_key $uri&pv=$page_version;
+        set_md5 $hash_key $uri$is_args$args&pv=$page_version;
         set $memcached_key :1:$hash_key;
 
         default_type       text/html;
